@@ -1,6 +1,6 @@
 # my read me 
 
-## my second heaing 
+## my second heading 
 
 this is a test text
 
