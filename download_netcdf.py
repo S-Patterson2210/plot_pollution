@@ -11,5 +11,5 @@ def download_netcdf(url, save_file):
 
     f.close()
 
-download_netcdf ('https://i.imgflip.com/5obphi.jpg', 'lotr_meme')
+download_netcdf ('https://goldsmr4.gesdisc.eosdis.nasa.gov/data/MERRA2/M2T1NXADG.5.12.4/2021/08/MERRA2_400.tavg1_2d_adg_Nx.20210831.nc4', 'MERRA2_400.tavg1_2d_adg_Nx.20210831.nc4')
 
