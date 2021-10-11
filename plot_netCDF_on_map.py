@@ -35,7 +35,3 @@ clevs = np.arange(0,100,5)
 # cs = map.contour(x,y,u[0,0,:,:],clevs,colors='red',linewidths=1)
 cs = map.quiver(lons,lats,u[0,0,:,:],v[0,0,:,:],latlon=True)
 plt.show()
-
-
-
-
