@@ -6,13 +6,16 @@ ds = nc.Dataset(fn)
 
 print (ds)
 
-lat = ds.variables['latitude'][:]
-lon = ds.variables['longitude'][:]
-time = ds.variables['time'][:]
-depth = ds.variables['depth'][:]
+# lat = ds.variables['latitude'][:]
+# lon = ds.variables['longitude'][:]
+# time = ds.variables['time'][:]
+# depth = ds.variables['depth'][:]
+# u = ds.variables['u'][:]
+# v = ds.variables['v'][:]
 
-print(lat)
-print(lon)
+
+# print(u)
+# print(lon)
 # print(time)
 # print(depth)
 

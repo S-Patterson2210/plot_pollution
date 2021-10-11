@@ -1,5 +1,5 @@
 import netCDF4 as nc
-# from netCDF4 import Dataset as NetCDFFile 
+
 import matplotlib.pyplot as plt
 import numpy as np
 import mpl_toolkits
@@ -16,8 +16,11 @@ lon = ds.variables['longitude'][:]
 time = ds.variables['time'][:]
 depth = ds.variables['depth'][:]
 u = ds.variables['u'][:]
+v = ds.variables['v'][:]
+um = ds.variables['um'][:]
+vm = ds.variables['vm'][:]
 
-map = Basemap(projection='merc',llcrnrlon=0.,llcrnrlat=-80.,urcrnrlon=360.,urcrnrlat=80.,resolution='c')
+map = Basemap(projection='merc',llcrnrlon=0.,llcrnrlat=-80.,urcrnrlon=360.,urcrnrlat=80.,resolution='h')
 
 map.drawcoastlines()
 map.drawstates()
@@ -29,10 +32,9 @@ lons, lats = np.meshgrid(lon,lat)
 x,y = map(lons,lats)
 
 clevs = np.arange(0,100,5)
-cs = map.contour(x,y,u[0,0,:,:],clevs,colors='red',linewidths=1)
-
+# cs = map.contour(x,y,u[0,0,:,:],clevs,colors='red',linewidths=1)
+cs = map.quiver(lons,lats,u[0,0,:,:],v[0,0,:,:],latlon=True)
 plt.show()
-
 
 
 
