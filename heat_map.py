@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import mpl_toolkits
 from mpl_toolkits.basemap import Basemap
+import math
 
 # The below line denotes which file I am pulling the data from
 ds = nc.Dataset('oscar_vel10004.nc')
@@ -29,22 +30,32 @@ map.drawstates()
 map.drawcountries()
 map.drawlsmask(land_color='linen', ocean_color='blue')
 
-stride = 3
+
 
 # Meshgrid tells the code to create a 2D array for the map, not neccessary for data already in 2D
+stride = 1
 lons, lats = np.meshgrid(lon[::stride],lat[::stride])
+p_u = u[0,0,::stride,::stride]
+p_v = v[0,0,::stride,::stride]
 
-print (lons)
-print (lon[::stride])
+curr_mag = []
+for u_row, v_row in zip(p_u, p_v):
+    curr_row = []
+    for u_val, v_val in zip (u_row, v_row):
+        abs_val = math.sqrt(u_val*u_val+v_val*v_val) 
+        curr_row.append(abs_val)
+    curr_mag.append(curr_row)
+
+x,y = map(lons,lats)
+cs = map.pcolormesh(x,y,curr_mag)
 
 
-# clevs = np.arange(0,100,5)
-# x,y = map(lons,lats)
-# cs = map.contour(x,y,u[0,0,:,:],clevs,colors='red',linewidths=1)
-# p_lons = lons#[::10]
-# p_lats = lats#[::10]
+
+# Meshgrid tells the code to create a 2D array for the map, not neccessary for data already in 2D
+# stride = 3
+# lons, lats = np.meshgrid(lon[::stride],lat[::stride])
 # p_u = u[0,0,::stride,::stride]
 # p_v = v[0,0,::stride,::stride]
+# cs = map.quiver(lons, lats, p_u, p_v, latlon=True)
 
-# cs = map.quiver(p_lons, p_lats, p_u, p_v, latlon=True)
-# plt.show()
+plt.show()
