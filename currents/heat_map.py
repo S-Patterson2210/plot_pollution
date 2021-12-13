@@ -1,5 +1,4 @@
 import netCDF4 as nc
-
 import matplotlib.pyplot as plt
 import numpy as np
 import mpl_toolkits
@@ -22,7 +21,7 @@ v = ds.variables['v'][:]
 um = ds.variables['um'][:]
 vm = ds.variables['vm'][:]
 
-map = Basemap(projection='merc',llcrnrlon=0.,llcrnrlat=-80.,urcrnrlon=360.,urcrnrlat=80.,resolution='h')
+map = Basemap(projection='merc',llcrnrlon=0.,llcrnrlat=-80.,urcrnrlon=360.,urcrnrlat=80.,resolution='h', suppress_ticks=False)
 
 # Self explanatory but below is telling program to draw particulars of a map e.g coastlines
 map.drawcoastlines()
